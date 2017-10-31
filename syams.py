@@ -158,13 +158,6 @@ def bot(op):
                         cl.updateGroup(X)
                         Ti = cl.reissueGroupTicket(op.param1)    
                         
-#----------------------------[Cek SPEED]----------------------------#WORK
-            if msg.text in ["Speed","speed"]:
-                    start = time.time()
-                    elapsed_time = time.time() - start
-                    cl.sendText(msg.to, "%sseconds" % (elapsed_time))
-#----------------------------[Cek SPEED]----------------------------#WORK
-
         if op.type == 59:
             print op
 
