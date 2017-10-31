@@ -65,24 +65,25 @@ def sendMessage(to, text, contentMetadata={}, contentType=0):
     messageReq[to] += 1
 
 #---------------------------[AutoLike-nya]---------------------------#
-#Like By Syams Copyright 2017 
-def autolike():#Like By Syams Copyright 2017
-     for zx in range(0,20):#Like By Syams copyright 2017
-        hasil = cl.activity(limit=20)#Like By Syams Copyright 2017
-        if hasil['result']['posts'][zx]['postInfo']['liked'] == False:#Like By Syams Copyright 2017
-          try:    #Like By Syams Copyright 2017
-            cl.like(hasil['result']['posts'][zx]['userInfo']['mid'],hasil['result']['posts'][zx]['postInfo']['postId'],likeType=1002)#Like By Syams Copyright 2017
-            cl.comment(hasil['result']['posts'][zx]['userInfo']['mid'],hasil['result']['posts'][zx]['postInfo']['postId'],"Autolike By Syams\n\nBot Auto Like Ini Gunakanlah Dengan Bijak（＾ω＾）\nAuto Like By »»»»» http://line.me/ti/p/~syams011 «««««")#Like By Syams Copyright 2017
-            print "Like"#Like By Syams Copyright 2017
-          except:#Like By Syams Copyright 2017
-            pass#Like By Syams Copyright 2017
-        else:#Like By Syams Copyright 2017
-            print "Already Liked"#Like By Syams Copyright 2017
-     time.sleep(500)#Like By Syams Copyright 2017
-thread2 = threading.Thread(target=autolike)#Like By Syams Copyright 2017
-thread2.daemon = True#Like By Syams Copyright 2017
-thread2.start()#Like By Syams Copyright 2017
-#Like By Syams Copyright 2017
+def autolike():
+     for zx in range(0,100):
+        hasil = cl.activity(limit=100)
+        if hasil['result']['posts'][zx]['postInfo']['liked'] == False:
+          try:    
+            #-----------------------------[JANGAN DIEDIT]-----------------------------#
+            cl.like(hasil['result']['posts'][zx]['userInfo']['mid'],hasil['result']['posts'][zx]['postInfo']['postId'],likeType=1002)
+            cl.comment(hasil['result']['posts'][zx]['userInfo']['mid'],hasil['result']['posts'][zx]['postInfo']['postId'],"Auto Like By Syams - 255\n\n» Youtube.com/c/SYAMSPlayMC")
+            #-----------------------------[JANGAN DIEDIT]-----------------------------#
+            cl.comment(hasil['result']['posts'][zx]['userInfo']['mid'],hasil['result']['posts'][zx]['postInfo']['postId'],"Auto Like By Syams - 255\n\n» Youtube.com/c/SYAMSPlayMC")
+            print "Like"
+          except:
+            pass
+        else:
+            print "Already Liked"
+     time.sleep(500)
+thread2 = threading.Thread(target=autolike)
+thread2.daemon = True
+thread2.start()
 #---------------------------[AutoLike-nya]---------------------------#
 
 def NOTIFIED_READ_MESSAGE(op):
@@ -156,6 +157,34 @@ def bot(op):
                         X.preventJoinByTicket = True
                         cl.updateGroup(X)
                         Ti = cl.reissueGroupTicket(op.param1)
+                        
+#----------------------------[Spam]----------------------------#WORK
+            if "Spam: " in msg.text:
+                cond = msg.text.split(" ")
+                value = int(cond[2])
+                text = msg.text.replace("Spam: " + str(cond[1]) + " " + str(value) + " ","")
+                ballon1 = value * (text + "\n")
+                if cond[1] == "on":
+                    if value <= 150:
+                        for x in range(value):
+                            cl.sendText(msg.to, text)
+                    else:
+                        cl.sendText(msg.to,"Jumlah spamming melebihi batas")
+                elif cond[1] == "off":
+                    if value <= 200:
+                        cl.sendText(msg.to,ballon1)
+                    else:
+                        cl.sendText(msg.to,"Jumlah spamming melebihi batas")
+                else:
+                    cl.sendText(msg.to,"Error condition")
+#----------------------------[Spam]----------------------------#WORK
+            
+#----------------------------[Cek SPEED]----------------------------#WORK
+            if msg.text in ["Speed","speed"]:
+                    start = time.time()
+                    elapsed_time = time.time() - start
+                    cl.sendText(msg.to, "%sseconds" % (elapsed_time))
+#----------------------------[Cek SPEED]----------------------------#WORK
 
         if op.type == 59:
             print op
