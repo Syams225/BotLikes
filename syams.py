@@ -156,29 +156,8 @@ def bot(op):
                         kc.acceptGroupInvitationByTicket(op.param1,Ti)
                         X.preventJoinByTicket = True
                         cl.updateGroup(X)
-                        Ti = cl.reissueGroupTicket(op.param1)
+                        Ti = cl.reissueGroupTicket(op.param1)    
                         
-#----------------------------[Spam]----------------------------#WORK
-            if "Spam: " in msg.text:
-                cond = msg.text.split(" ")
-                value = int(cond[2])
-                text = msg.text.replace("Spam: " + str(cond[1]) + " " + str(value) + " ","")
-                ballon1 = value * (text + "\n")
-                if cond[1] == "on":
-                    if value <= 150:
-                        for x in range(value):
-                            cl.sendText(msg.to, text)
-                    else:
-                        cl.sendText(msg.to,"Jumlah spamming melebihi batas")
-                elif cond[1] == "off":
-                    if value <= 200:
-                        cl.sendText(msg.to,ballon1)
-                    else:
-                        cl.sendText(msg.to,"Jumlah spamming melebihi batas")
-                else:
-                    cl.sendText(msg.to,"Error condition")
-#----------------------------[Spam]----------------------------#WORK
-            
 #----------------------------[Cek SPEED]----------------------------#WORK
             if msg.text in ["Speed","speed"]:
                     start = time.time()
